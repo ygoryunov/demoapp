@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Triangle calculator</title>
+  <link href="demo.css" media="all" rel="stylesheet" type="text/css">
+  <script type="text/javascript">
+    function calc(sideA, sideB, sideC) {
+		res = "";
+		if (sideA<=0 || sideB<=0 || sideC<0){
+		    res = "Invalid arguments";
+		} else if (sideA == sideB && sideB == sideC) {
+            res = "Equilateral";
+        } else if (sideA == sideB || sideB == sideC || sideA == sideC) {
+            res = "Isosceles";
+        } else if ((sideA*sideA + sideB*sideB - sideC*sideC) == 0 ||
+                   (sideA*sideA + sideC*sideC - sideB*sideB) == 0 ||
+                   (sideC*sideC + sideB*sideB - sideA*sideA) == 0) {
+            res = "Right";
+        } else if ((sideA*sideA + sideB*sideB - sideC*sideC) < 0 ||
+                   (sideA*sideA + sideC*sideC - sideB*sideB) < 0 ||
+                   (sideC*sideC + sideB*sideB - sideA*sideA) < 0) {
+            res = "Obtuse";
+        } else {
+            res = "Scalene";
+        }
+        this.result_field.value = res;
+    }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <h1>Calculate triangle type </h1>
+      <p>Please provide sides length and click the calculate button.</p>
+      <form name="calc_form" onsubmit="calc(this.sidea_field.value, this.sideb_field.value, this.sidec_field.value); return false;">
+        <table>
+          <tr>
+            <td><label for="sidea_field">Side A:</label></td>
+            <td><input id="sidea_field" size="30" type="text"></td>
+          </tr>
+          <tr>
+            <td><label for="sideb_field">Side B:</label></td>
+            <td><input id="sideb_field" size="30" type="text"></td>
+          </tr>
+          <tr>
+            <td><label for="sidec_field">Side C:</label></td>
+            <td><input id="sidec_field" size="30" type="text"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td><input id="calc_button" type="submit" value="CALC"></td>
+          </tr>
+          <tr>
+            <td><label for="result_field">Triangle is:</label></td>
+            <td><input id="result_field" type="text" size="30" readonly></td>
+          </tr>
+        </table>
+      </form>
+  </div>
+</body>
+</html>
