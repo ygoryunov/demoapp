@@ -52,7 +52,15 @@ Using dictionary values
     Log         ${DICTIONARY['name']}
     Log         ${DICTIONARY['lastname']}
 
+Also you may set default values to arguments
+    Pass me arg
+    Pass me arg  Something different
+
 *** Keywords ***
 Return me calculation
     ${var} =    Evaluate    ${INTEGER VARIABLE} + ${FLOAT VARIABLE}
     [Return]    ${var}
+
+Pass me arg
+    [Arguments]  ${arg}=Something
+    Log    ${arg}
